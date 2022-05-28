@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <title><%= htmlWebpackPlugin.options.title %></title>
+
+    <!-- 引入bts5 -->
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/popper.js/2.9.3/umd/popper.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/js/bootstrap.min.js"></script>
+
+    <style>
+      body {
+        margin: 0px;
+        padding: 0px;
+      }
+      #app {
+        margin: 0px;
+        padding: 0px;
+      }
+      @media screen and (min-width:1400px) {
+            html {
+                font-size: 24px;
+            }
+        }
+      @media screen and (max-width:1400px) and (min-width:1200px) {
+            html {
+                font-size: 13px;
+            }
+        }
+        @media screen and (max-width:1200px) and (min-width:992px) {
+            html {
+                font-size: 10px;
+            }
+        }
+        @media screen and (max-width:992px) and (min-width:768) {
+            html {
+                font-size: 16px;
+            }
+        }
+        @media screen and (max-width:768px) and (min-width:576px) {
+            html {
+                font-size: 15px;
+            }
+        }
+      @media screen and (max-width:576px) and (min-width:370px) {
+            html {
+                font-size: 11px;
+            }
+        }
+        @media screen and (max-width:370px) and (min-width:29px) {
+            html {
+                font-size: 9px;
+            }
+        }
+        @media screen and (max-width:290px) and (min-width:200px) {
+            html {
+                font-size: 7px;
+            }
+        }
+    </style>
+  </head>
+  <body>
+    <noscript>
+      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+  </body>
+</html>
