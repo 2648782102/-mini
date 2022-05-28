@@ -141,6 +141,7 @@
       onplay() {
         this.kplay = true
         this.imgkb = 'imgplay'
+        console.log(this.mp3obj);
       },
       // 暂停回调
       onpause() {

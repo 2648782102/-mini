@@ -54,9 +54,9 @@ export default {
         actions: {
             // 获取歌曲链接信息
             mp3Obj(context,value) {
-                // axios.get('https://autumnfish.cn/song/url?id='+value)
-                axios.get('https://netease-cloud-music-api-lilac-one-32.vercel.app/song/url?id='+value)
+                axios.get('http://localhost:8080/api1/song/url?id='+value)
                 .then(response => {
+                    console.log(response);
                     context.commit('MP3OBJ',response.data)
                 })
                 .catch(function(error) {

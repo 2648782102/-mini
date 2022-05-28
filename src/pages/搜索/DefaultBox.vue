@@ -20,7 +20,7 @@ export default {
       ...mapState('musicData',['reshou']),
     },
     mounted() {
-      axios.get('https://netease-cloud-music-api-lilac-one-32.vercel.app/search/hot/detail')
+      axios.get('http://localhost:8080/api1/search/hot/detail')
                 .then(response => {
                     this.$store.commit('musicData/RESHOU',response.data.data)
                 })
