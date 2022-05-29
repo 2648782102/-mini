@@ -270,7 +270,7 @@
             this.musicSrc = this.mp3obj.data[0].id
             // 读取歌词并处理
             var lrcObj = {}
-            if(this.lyric.length) {
+            if(this.lyric) {
               let LY = this.lyric.lrc.lyric
             let LYR = LY.split("\n")
             let LYRI = /\[\d*:\d*(\.|:)\d*]/g
