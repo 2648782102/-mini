@@ -73,7 +73,7 @@
           </div>
           <div class="play-pause" @click="playon">
             <i :class="kplay?'fas fa-pause':'fas fa-play'"></i>
-            <audio ref="audio" :src="mp3obj.data[0].url" @pause="onpause" @play="onplay" @canplay="canplay"
+            <audio ref="audio" :src="'https://music.163.com/song/media/outer/url?id='+mp3obj.data[0].id+'.mp3' " @pause="onpause" @play="onplay" @canplay="canplay"
               autoplay>不支持</audio>
           </div>
           <div class="next" @click="musicnext">
