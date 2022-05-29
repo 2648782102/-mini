@@ -209,6 +209,10 @@
       canplay() {
         // 重置图片动画
         this.imgkb = 'imgplay'
+        // 评论数赋值
+        if (this.pinglun) {
+          this.pinglunnum = this.pinglun.hotComments.length
+        }
         // console.log(LYR)
         let time = formatTime(this.$refs.audio.duration)
         this.musictime = time
@@ -270,7 +274,13 @@
           this.musicweb = true
           // 数据到手后
             this.musicSrc = this.mp3obj.data[0].id
-            // 读取歌词并处理
+      },
+      pinglun() {
+        // 评论数赋值
+          this.pinglunnum = this.pinglun.hotComments.length
+      },
+      lyric() {
+        // 读取歌词并处理
             var lrcObj = {}
             let LY = this.lyric.lrc.lyric
             let LYR = LY.split("\n")
@@ -289,11 +299,7 @@
             }
             this.lyricObj = lrcObj
             this.getAllKey(lrcObj)
-              // 评论数赋值
-              if (this.pinglun) {
-                this.pinglunnum = this.pinglun.hotComments.length
-              }
-      },
+      }
     }
   }
 
