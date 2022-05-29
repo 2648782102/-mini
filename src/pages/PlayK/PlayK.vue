@@ -22,8 +22,12 @@
       <div class="dox3">
         <div class="left">
           <div class="ddd">
-            <p v-for="(item,key,index) in lyricObj" :key="index"><span
-                v-if="lrctime>key&&lrctime<allkeys[index+1]">{{item}}</span></p>
+              <p v-for="(item,key,index) in lyricObj" :key="index">
+                <transition appear
+             name="lyricAT"
+             ><span
+                v-if="lrctime>key&&lrctime<allkeys[index+1]" :key="index">{{item}}</span>
+                </transition></p>
           </div>
           <div class="ddd" style="font-size:2.4rem;">
             <p>{{ imgobj.songs[0].name }}</p>
@@ -269,9 +273,9 @@
           // 数据到手后
             this.musicSrc = this.mp3obj.data[0].id
             // 读取歌词并处理
+            this.lyricObj = {}
             var lrcObj = {}
-            if(this.lyric) {
-              let LY = this.lyric.lrc.lyric
+            let LY = this.lyric.lrc.lyric
             let LYR = LY.split("\n")
             let LYRI = /\[\d*:\d*(\.|:)\d*]/g
             for (let i = 0; i < LYR.length; i++) {
@@ -285,9 +289,8 @@
               var content = LYR[i].replace(timeRegExpArr, "")
               let time = min * 60 + second
               lrcObj[time] = content
-              this.lyricObj = lrcObj
             }
-            }
+            this.lyricObj = lrcObj
             this.getAllKey(lrcObj)
               // 评论数赋值
               if (this.pinglun) {
@@ -434,12 +437,13 @@
   .ddd {
     width: 100%;
     height: 33%;
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     font-weight: 600;
     padding-left: 0.8rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    overflow: hidden;
   }
 
   .ddd p {
