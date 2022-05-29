@@ -185,9 +185,10 @@ import axios from 'axios'
             // 引入vuex变量
             ...mapState('musicData',['userxinxi'])
         },
-        mounted() {
-            if(this.userxinxi) {
-                axios.get('https://netease-cloud-music-api-lilac-one-32.vercel.app/user/record?uid='+this.userxinxi.userId)
+        watch: {
+            userxinxi() {
+                this.$nextTick(() => {
+                    axios.get('https://netease-cloud-music-api-lilac-one-32.vercel.app/user/record?uid='+this.userxinxi.userId)
                 .then(response => {
                     this.$store.commit('musicData/ZUIJINPLAY',response.data.allData[0].song.al)
                     this.loginState = true
@@ -211,8 +212,9 @@ import axios from 'axios'
                 .catch(function(error) {
                     console.log(error);
                 })
+                })
             }
-        }
+        },
     };
 </script>
 
