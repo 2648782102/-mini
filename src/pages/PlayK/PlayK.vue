@@ -73,7 +73,7 @@
           </div>
           <div class="play-pause" @click="playon">
             <i :class="kplay?'fas fa-pause':'fas fa-play'"></i>
-            <audio ref="audio" :src="'https://music.163.com/song/media/outer/url?id='+mp3obj.data[0].id+'.mp3' " @pause="onpause" @play="onplay" @canplay="canplay"
+            <audio ref="audio" :src="'https://music.163.com/song/media/outer/url?id='+musicSrc+'.mp3' " @pause="onpause" @play="onplay" @canplay="canplay"
               autoplay>不支持</audio>
           </div>
           <div class="next" @click="musicnext">
@@ -111,6 +111,8 @@
       return {
         kplay: true,
         musicweb: false,
+        // audio的src
+        musicSrc: '',
         imgkb: 'imgpaused',
         // 总时长
         musictime: 0,
@@ -147,7 +149,6 @@
         this.kplay = false
         this.imgkb = 'imgpaused'
       },
-      // console.log(this.mp3obj.data[0].url)
       playon() {
         if (!this.kplay) {
           this.$refs['audio'].play()
@@ -206,34 +207,11 @@
       canplay() {
         // 重置图片动画
         this.imgkb = 'imgplay'
-        // 读取歌词并处理
-        var lrcObj = {}
-        // console.log(this.lyric.lrc.lyric)
-        let LY = this.lyric.lrc.lyric
-        let LYR = LY.split("\n")
-        let LYRI = /\[\d*:\d*(\.|:)\d*]/g
-        for (let i = 0; i < LYR.length; i++) {
-          let timeRegExpArr = LYR[i].match(LYRI)
-          if (!timeRegExpArr) continue
-          let t = timeRegExpArr[0]
-          // 取出分
-          let min = Number(t.match(/\[\d*/i).toString().slice(1));
-          let second = Number(t.match(/:\d*/i).toString().slice(1))
-          // 歌词文本
-          var content = LYR[i].replace(timeRegExpArr, "")
-          let time = min * 60 + second
-          lrcObj[time] = content
-        }
-        this.lyricObj = lrcObj
-        this.getAllKey(lrcObj)
-        // console.log(LYR)
         // 评论数赋值
         if (this.pinglun) {
           this.pinglunnum = this.pinglun.hotComments.length
         }
-        if (this.kplay) {
-          this.$refs['audio'].play()
-        }
+        // console.log(LYR)
         let time = formatTime(this.$refs.audio.duration)
         this.musictime = time
         this.$refs.audio.ontimeupdate = () => {
@@ -276,11 +254,6 @@
         }
       }
     },
-    beforeUpdate() {
-      if (this.mp3obj) {
-        this.musicweb = true
-      }
-    },
     // 计算属性
     computed: {
       ...mapState('musicData', ['musicArr', 'imgobj', 'mp3obj', 'musicnum', 'pinglun', 'lyric'])
@@ -295,10 +268,32 @@
       })
     },
     watch: {
-      mp3obj(newvalu) {
-        if (newvalu) {
+      mp3obj() {
           this.musicweb = true
-        }
+          // 数据到手后
+            this.musicSrc = this.mp3obj.data[0].id
+            // 读取歌词并处理
+            var lrcObj = {}
+            // console.log(this.lyric.lrc.lyric)
+            if(this.lyric.length) {
+              let LY = this.lyric.lrc.lyric
+            let LYR = LY.split("\n")
+            let LYRI = /\[\d*:\d*(\.|:)\d*]/g
+            for (let i = 0; i < LYR.length; i++) {
+              let timeRegExpArr = LYR[i].match(LYRI)
+              if (!timeRegExpArr) continue
+              let t = timeRegExpArr[0]
+              // 取出分
+              let min = Number(t.match(/\[\d*/i).toString().slice(1));
+              let second = Number(t.match(/:\d*/i).toString().slice(1))
+              // 歌词文本
+              var content = LYR[i].replace(timeRegExpArr, "")
+              let time = min * 60 + second
+              lrcObj[time] = content
+              this.lyricObj = lrcObj
+            }
+            }
+            this.getAllKey(lrcObj)
       },
     }
   }

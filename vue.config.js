@@ -13,6 +13,6 @@ module.exports = defineConfig({
     }
     // 简易代理
     // proxy: 'https://netease-cloud-music-api-lilac-one-32.vercel.app',// 代理目标的基础路径
-  }
+  },
 })
 

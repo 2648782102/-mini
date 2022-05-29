@@ -37,7 +37,7 @@
           <ul>
             <li v-for="item in tuiArr" :key="item.id">
               <p class="titlep">{{ item.title }}</p>
-              <img :src="require('../../assets/img/'+item.imgurl)">
+              <img v-lazy="require('../../assets/img/'+item.imgurl)">
             </li>
           </ul>
         </div>

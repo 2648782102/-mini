@@ -1,22 +1,23 @@
 
 // 引入vuerouter
 import VueRouter from "vue-router";
-// 引入路由组件
-import LeftDiscover from '../pages/LeftDiscover/LeftDiscover'
-import RightMy from '../pages/RightMy/RightMy'
-import FaXian from '../pages/LeftDiscover/FaXian'
+
+// 引入路由组件，并进行懒加载
+const LeftDiscover = () => import('../pages/LeftDiscover/LeftDiscover')
+const RightMy = () => import('../pages/RightMy/RightMy')
+const FaXian = () => import('../pages/LeftDiscover/FaXian')
 import DingYue from '../pages/LeftDiscover/DingYue'
-import BottomNav from '../pages/PlayNav/BottomNav'
-import PlayK from '../pages/PlayK/PlayK'
-import SeekPlay from '../pages/搜索/SeekPlay'
-import DefaultBox from '../pages/搜索/DefaultBox'
-import SeekUl from '../pages/搜索/SeekUl'
-import PingLun from '../pages/PlayK/PingLun'
-import MusicPinglun from '../pages/PlayK/MusicPinglun'
-import GuShi from '../pages/PlayK/GuShi'
-import DengLu from '../pages/denglu/DengLu'
-import ZuiJInplay from '../pages/RightMy/ZuiJinplay'
-import GeDanMusic from '../pages/RightMy/GeDanMusic'
+const BottomNav = () => import('../pages/PlayNav/BottomNav')
+const PlayK = () => import('../pages/PlayK/PlayK')
+const SeekPlay = () => import('../pages/搜索/SeekPlay')
+const DefaultBox = () => import('../pages/搜索/DefaultBox')
+const SeekUl = () => import('../pages/搜索/SeekUl')
+const PingLun = () => import('../pages/PlayK/PingLun')
+const MusicPinglun = () => import('../pages/PlayK/MusicPinglun')
+const GuShi = () => import('../pages/PlayK/GuShi')
+const DengLu = () => import('../pages/denglu/DengLu')
+const ZuiJInplay = () => import('../pages/RightMy/ZuiJinplay')
+const GeDanMusic = () => import('../pages/RightMy/GeDanMusic')
 
 // 解决：Uncaught (in promise) NavigationDuplicated; 
 let originalPush = VueRouter.prototype.push; // 先保存一份 VueRouter.prototype.push方法

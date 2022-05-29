@@ -25,7 +25,7 @@
                 <div class="ml" v-show="loginState">
                     <div class="tou">
                         <!-- 头像 -->
-                        <img :src="userImgurl" alt="头像">
+                        <img v-lazy="userImgurl" alt="头像">
                     </div>
                     <div class="ms-3 mt-3">
                         <h3 style="display: flex;flex-direction: row;height: 2rem;">{{username?username:'且问清风'}}<h3 class="vip ms-2">VIP</h3></h3>
@@ -61,7 +61,7 @@
                         <div class="dark">
                             <div class="pn">
                                 <div class="y1">
-                                    <img :src="mylike.coverImgUrl" alt="" v-show="mylike">
+                                    <img v-lazy="mylike.coverImgUrl" alt="" v-show="mylike">
                                 </div>
                             </div>
                             <div>
@@ -123,7 +123,7 @@
                 <div class="bo">
                     <ul class="song" v-show="kai">
                         <li @click="gedan(item.id)" v-for="item in playlist" :key="item.id">
-                            <img :src="item.coverImgUrl" alt="">
+                            <img v-lazy="item.coverImgUrl" alt="">
                             <div>
                                 <h3>{{ item.name }}</h3>
                                 <p>{{ item.trackCount }}首</p>
