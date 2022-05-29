@@ -207,10 +207,6 @@
       canplay() {
         // 重置图片动画
         this.imgkb = 'imgplay'
-        // 评论数赋值
-        if (this.pinglun) {
-          this.pinglunnum = this.pinglun.hotComments.length
-        }
         // console.log(LYR)
         let time = formatTime(this.$refs.audio.duration)
         this.musictime = time
@@ -274,7 +270,6 @@
             this.musicSrc = this.mp3obj.data[0].id
             // 读取歌词并处理
             var lrcObj = {}
-            // console.log(this.lyric.lrc.lyric)
             if(this.lyric.length) {
               let LY = this.lyric.lrc.lyric
             let LYR = LY.split("\n")
@@ -294,6 +289,10 @@
             }
             }
             this.getAllKey(lrcObj)
+              // 评论数赋值
+              if (this.pinglun) {
+                this.pinglunnum = this.pinglun.hotComments.length
+              }
       },
     }
   }
