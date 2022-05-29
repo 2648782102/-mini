@@ -324,13 +324,7 @@
   .box {
     width: 100%;
     height: 100%;
-    background: #C9D6FF;
-    /* fallback for old browsers */
-    background: -webkit-linear-gradient(to bottom, #e2e2e233, #c6d2fa24);
-    /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to bottom, #b2defb19, #ffffff2b);
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+    background-color: rgb(255, 255, 255);
   }
 
   .dox1 {

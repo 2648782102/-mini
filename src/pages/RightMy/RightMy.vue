@@ -205,7 +205,6 @@ import axios from 'axios'
                 // 获取用户歌单
                 axios.get('https://netease-cloud-music-api-lilac-one-32.vercel.app/user/playlist?uid='+this.userxinxi.userId)
                 .then(response => {
-                    console.log(response);
                     this.mylike = response.data.playlist[0]
                     this.playlist = response.data.playlist
                 })
