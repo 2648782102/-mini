@@ -4,7 +4,6 @@
           <i class="fas fa-angle-left"></i>
       </div>
       <div class="for">
-          <form>
               <h1>手机号登录</h1>
               <label for="">国家地区 中国</label>
               <div class="input-group mt-2">
@@ -15,8 +14,7 @@
                   <label for="">密码</label>
                   <input @keyup.enter="subm" v-model="password" type="password" name="" id="" class="form-control in" placeholder="请输入密码">
               </div>
-              <button @click="subm" class="bt btn btn-primary mt-3">登录</button>
-          </form>
+              <button type="button" @click="subm" class="bt btn btn-primary mt-3">登录</button>
       </div>
   </div>
 </template>
@@ -39,7 +37,6 @@ export default {
             axios.get('https://netease-cloud-music-api-lilac-one-32.vercel.app/login/cellphone?phone='+this.phone+'&&password='+this.password)
             .then(response => {
                 this.$store.commit('musicData/USERXINXI',response.data.bindings[0])
-                console.log(response);
                 this.$router.push({
                     name: 'rightmy'
                 })
@@ -57,8 +54,8 @@ export default {
         width: 100%;
         background-repeat: no-repeat;
         color: white;
-        background-image: url(../../assets/d1.jpg);
         background-size: 180%;
+        background-image: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
     }
     .btn2 {
         height: 5rem;

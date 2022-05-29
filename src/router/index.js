@@ -16,6 +16,7 @@ import MusicPinglun from '../pages/PlayK/MusicPinglun'
 import GuShi from '../pages/PlayK/GuShi'
 import DengLu from '../pages/denglu/DengLu'
 import ZuiJInplay from '../pages/RightMy/ZuiJinplay'
+import GeDanMusic from '../pages/RightMy/GeDanMusic'
 
 // 解决：Uncaught (in promise) NavigationDuplicated; 
 let originalPush = VueRouter.prototype.push; // 先保存一份 VueRouter.prototype.push方法
@@ -135,6 +136,12 @@ const router = new VueRouter({
             component: ZuiJInplay,
             meta: {title: '最近播放',isAush: false}
         },
+        {
+            name: 'gedanmusic',
+            path: '/gedanmusic',
+            component: GeDanMusic,
+            meta: {title: '歌单',isAush: false}
+        }
     ]
 })
 

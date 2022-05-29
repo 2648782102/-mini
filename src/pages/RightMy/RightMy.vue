@@ -15,23 +15,25 @@
                         <i class="fas fa-qrcode"></i>
                     </div>
                     <div>
-                        <router-link :to="{name:'denglu'}">
-                            <i class="fas fa-cog"></i>
-                        </router-link>
+                        <i @click="tuichu" class="fas fa-cog"></i>
                     </div>
                 </div>
             </div>
         </header>
         <main>
             <div class="m1">
-                <div class="ml">
+                <div class="ml" v-show="loginState">
                     <div class="tou">
-                        <img src="../../assets/song/0.jpg" alt="头像">
+                        <!-- 头像 -->
+                        <img :src="userImgurl" alt="头像">
                     </div>
                     <div class="ms-3 mt-3">
-                        <h3 style="display: flex;flex-direction: row;height: 2rem;">{{username.nickname?username.nickname:'且问清风'}}<h3 class="vip ms-2">VIP</h3></h3>
+                        <h3 style="display: flex;flex-direction: row;height: 2rem;">{{username?username:'且问清风'}}<h3 class="vip ms-2">VIP</h3></h3>
                         <p class="yao">邀请好友送他VIP<i class="fas fa-angle-right ms-2"></i></p>
                     </div>
+                </div>
+                <div v-show="!loginState" class="loginNo">
+                    <button @click="$router.push({name:'denglu'})" type="button" class="btn btn-primary">请先登录!</button>
                 </div>
                 <div class="mr">
                     <i class="fas fa-user-plus me-4"></i>
@@ -51,7 +53,7 @@
             <div class="m3">
                 <div class="to">
                     <router-link :to="{name:'rightmy'}" active-class="act">音乐</router-link>
-                    <div @click="ool">故事</div>
+                    <div>故事</div>
                     <div>频道</div>
                 </div>
                 <div class="bo">
@@ -59,12 +61,12 @@
                         <div class="dark">
                             <div class="pn">
                                 <div class="y1">
-                                    <i class="far fa-heart"></i>
+                                    <img :src="mylike.coverImgUrl" alt="" v-show="mylike">
                                 </div>
                             </div>
                             <div>
-                                <h4>收藏</h4>
-                                <p>333</p>
+                                <h4>喜欢</h4>
+                                <p>{{ mylike.trackCount }}</p>
                             </div>
                         </div>
                     </div>
@@ -112,7 +114,7 @@
             <div class="m4">
                 <div class="to">
                     <!-- fas fa-chevron-down -->
-                    <div @click="kait"><i style="width:2rem;" :class="kai?'fas fa-angle-up':'fas fa-chevron-down'"></i>我创建的歌单 {{ songlistArr.length }}</div>
+                    <div @click="kait"><i style="width:2rem;" :class="kai?'fas fa-angle-up':'fas fa-chevron-down'"></i>我创建的歌单 {{ playlist.length }}</div>
                     <div class="od">
                         <div><i class="fas fa-plus"></i></div>
                         <div><i class="fas fa-tasks"></i></div>
@@ -120,11 +122,11 @@
                 </div>
                 <div class="bo">
                     <ul class="song" v-show="kai">
-                        <li v-for="item in songlistArr" :key="item.id">
-                            <img :src="require('../../assets/song/'+item.img)" alt="">
+                        <li @click="gedan(item.id)" v-for="item in playlist" :key="item.id">
+                            <img :src="item.coverImgUrl" alt="">
                             <div>
-                                <h3>{{ item.title }}</h3>
-                                <p>{{ item.num }}首</p>
+                                <h3>{{ item.name }}</h3>
+                                <p>{{ item.trackCount }}首</p>
                             </div>
                         </li>
                     </ul>
@@ -142,74 +144,73 @@ import axios from 'axios'
         name: "RightMy",
         data() {
             return {
+                userImgurl: '',
+                mylike: {},
+                playlist:[],
                 kai:true,
                 username: {},
-                songlistArr: [
-            {
-                id:1,
-                title:'推荐歌单',
-                num: 333,
-                img: '1.jpeg',
-            },
-            {
-                id:2,
-                title:'默认收藏',
-                num: 0,
-                img: '2.jpg'
-            },
-            {
-                id:3,
-                title:'最热歌单',
-                num: 100,
-                img: '3.jpg'
-            },
-            {
-                id:4,
-                title:'最多播放',
-                num: 100,
-                img: '4.jpg'
-            },
-            {
-                id:5,
-                title:'最多点赞',
-                num: 100,
-                img: '5.jpg'
-            },
-            {
-                id:6,
-                title:'最多收藏',
-                num: 48,
-                img: '6.jpg'
-            },
-        ]
+                loginState: false,
             }
         },
         methods: {
+            // 单击歌单
+            gedan(id) {
+                axios.get('https://netease-cloud-music-api-lilac-one-32.vercel.app/playlist/track/all?id='+id+'&limit=10&offset=1')
+                .then(response => {
+                    this.$store.commit('musicData/GETMUSIC', response.data.songs)
+                    this.$router.push({
+                        name: 'gedanmusic'
+                    })
+                })
+                .catch(function(error) {
+                    console.log(error)
+                })
+            },
             kait() {
                 this.kai = !this.kai
-            },
-            ool() {
-                console.log(this.userxinxi);
             },
             zuijin() {
                 this.$router.push({
                     name: 'zuijinplay'
                 })
             },
+            // 切换登录
+            tuichu() {
+                this.$router.push({
+                    name: 'denglu'
+                })
+            }
         },
         computed: {
+            // 引入vuex变量
             ...mapState('musicData',['userxinxi'])
         },
         mounted() {
             if(this.userxinxi) {
                 axios.get('https://netease-cloud-music-api-lilac-one-32.vercel.app/user/record?uid='+this.userxinxi.userId)
                 .then(response => {
-                    console.log(response);
                     this.$store.commit('musicData/ZUIJINPLAY',response.data.allData[0].song.al)
-                    this.username = JSON.parse(this.userxinxi.tokenJsonStr)
+                    this.loginState = true
                 })
                 .catch(function(error) {
                     console.log(error)
+                })
+                // 获取用户详细信息
+                axios.get('https://netease-cloud-music-api-lilac-one-32.vercel.app/user/detail?uid='+this.userxinxi.userId)
+                .then(response => {
+                    // console.log(response);
+                    this.username = response.data.profile.nickname
+                    this.userImgurl = response.data.profile.avatarUrl
+                })
+                // 获取用户歌单
+                axios.get('https://netease-cloud-music-api-lilac-one-32.vercel.app/user/playlist?uid='+this.userxinxi.userId)
+                .then(response => {
+                    console.log(response);
+                    this.mylike = response.data.playlist[0]
+                    this.playlist = response.data.playlist
+                })
+                .catch(function(error) {
+                    console.log(error);
                 })
             }
         }
@@ -406,8 +407,11 @@ import axios from 'axios'
         font-size: 2rem;
         color: white;
     }
-    .y1 {
-        background-image: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
+    .y1>img{
+        width: 100%;
+        height: 100%;
+        border-radius: 1rem;
+        background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
     }
     .y2 {
         background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
@@ -545,5 +549,14 @@ import axios from 'axios'
     }
     .song>li>div {
         padding: 1rem;
+    }
+    .loginNo {
+        width: 75%;
+        display: flex;
+        justify-content: center;
+    }
+    .loginNo>button {
+        width: 15rem;
+        height: 3rem;
     }
 </style>
