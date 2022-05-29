@@ -23,11 +23,9 @@
         <div class="left">
           <div class="ddd">
               <p v-for="(item,key,index) in lyricObj" :key="index">
-                <transition appear
-             name="lyricAT"
-             ><span
+                <span
                 v-if="lrctime>key&&lrctime<allkeys[index+1]" :key="index">{{item}}</span>
-                </transition></p>
+                </p>
           </div>
           <div class="ddd" style="font-size:2.4rem;">
             <p>{{ imgobj.songs[0].name }}</p>
@@ -273,7 +271,6 @@
           // 数据到手后
             this.musicSrc = this.mp3obj.data[0].id
             // 读取歌词并处理
-            this.lyricObj = {}
             var lrcObj = {}
             let LY = this.lyric.lrc.lyric
             let LYR = LY.split("\n")
