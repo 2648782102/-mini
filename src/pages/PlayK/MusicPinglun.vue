@@ -175,7 +175,6 @@
 
   footer {
     width: 100%;
-    height: 10%;
     display: flex;
     flex-direction: row;
     position: fixed;
@@ -200,7 +199,6 @@
 
   .footer2 {
     width: 80%;
-    height: 8rem;
     display: flex;
     align-items: center;
   }

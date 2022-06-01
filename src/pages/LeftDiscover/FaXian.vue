@@ -47,7 +47,7 @@
         <span class="carousel-control-next-icon"></span>
       </button>
       </div>
-      <div class="dox2">
+      <div class="dox2 mt-4">
         <div class="tui">
           <div class="tuiwen">
             <h2>推荐频道_<span>主题音乐系列</span></h2>
@@ -56,7 +56,7 @@
             <div><i class="fas fa-angle-right"></i></div>
           </div>
         </div>
-        <div class="rolldiv">
+        <div class="rolldiv pt-2">
           <ul>
             <li v-for="item in tuiArr" :key="item.id">
               <p class="titlep">{{ item.title }}</p>
@@ -66,9 +66,9 @@
         </div>
       </div>
       <div class="dox3">
-        <img src="../../assets/img/yiqi.jpg" class="col-12 col-sm-6">
+        <img src="../../assets/img/yiqi.jpg" class="col-12 col-sm-12">
       </div>
-      <div class="dox4">
+      <div class="dox4 mt-4">
         <div class="t1">
           <p>宝藏推荐<span>_根据你的口味推荐</span></p>
         </div>
@@ -165,7 +165,8 @@ export default {
   }
   .dox1 {
     width: 100%;
-    height: 24%;
+    margin-top: 1rem;
+    margin-bottom: 3rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -291,7 +292,6 @@ export default {
   }
   .dox2 {
     width: 100%;
-    height: 34%;
     display: flex;
     flex-direction: column;
   }
@@ -329,10 +329,6 @@ export default {
     color: rgba(63, 63, 63, 0.655);
     box-shadow: 2px 2px 4px 1px rgba(188, 205, 206, 0.695);
   }
-  .rolldiv {
-    width: 100%;
-    height: 80%;
-  }
   .rolldiv>ul {
     width: 100%;
     height: 100%;
@@ -359,24 +355,21 @@ export default {
     color: white;
   }
   .rolldiv>ul>li>img {
-    width: 10rem;
-    height: 92%;
+    width: 25vw;
+    height: 98%;
     border-radius: 1rem;
     box-shadow: 3px 3px 8px 3px rgba(191, 199, 202, 0.682);
   }
   .dox3 {
-    height: 12%;
     display: flex;
     align-items: center;
     justify-content: center;
   }
   .dox3>img{
-    height: 90%;
     border-radius: 1rem;
   }
   .dox4 {
     width: 100%;
-    height: 30%;
     display: flex;
     flex-direction: column;
     overflow: hidden;

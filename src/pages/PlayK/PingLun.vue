@@ -6,7 +6,7 @@
                     <i class="fas fa-angle-left"></i>
                 </div>
             </div>
-            <div class="dox1_2">
+            <div class="dox1_2 pt-4 pb-4">
                 <div class="dox1_2_1">
                     <img :src="imgobj.songs[0].al.picUrl">
                 </div>
@@ -69,7 +69,7 @@
 
     header {
         width: 100%;
-        height: 30%;
+        /* height: 30%; */
         position: fixed;
         top: 0px;
         background-color: white;
@@ -80,7 +80,7 @@
 
     .dox1_1 {
         width: 100%;
-        height: 24%;
+        /* height: 24%; */
         display: flex;
         align-items: center;
     }
@@ -217,7 +217,7 @@
         width: 100%;
         height: 70%;
         position: absolute;
-        top: 30%;
+        top: 24vh;
         overflow: scroll;
     }
 </style>

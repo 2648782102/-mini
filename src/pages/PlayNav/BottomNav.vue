@@ -5,7 +5,7 @@
       </div>
       <div class="dox-2">
           <div class="nav-1 col-3">
-            <router-link active-class="activeBlack" :to="{name:'leftdiscover'}">
+            <router-link class="rout" active-class="activeBlack" :to="{name:'leftdiscover'}">
                 <i class="fas fa-dice-d20"></i>
                 <p>发现</p>
             </router-link>
@@ -19,7 +19,7 @@
             </router-link>
         </div>
         <div class="nav-3 col-3">
-            <router-link active-class="activeBlack" :to="{name:'rightmy'}">
+            <router-link class="rout" active-class="activeBlack" :to="{name:'rightmy'}">
                 <i class="fas fa-user-alt"></i>
                 <p>我的</p>
             </router-link>
@@ -85,7 +85,7 @@ export default {
     box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 14px 0 rgba(0, 0, 0, 0.19);
 }
 .nav-1,.nav-2,.nav-3 {
-    height: 65%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -93,6 +93,14 @@ export default {
 .nav-1 i,.nav-3 i {
     font-size: 2rem;
     color: rgb(117, 117, 117);
+}
+.rout {
+    height: 100%;
+    padding-top: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 a{
     text-decoration: none;

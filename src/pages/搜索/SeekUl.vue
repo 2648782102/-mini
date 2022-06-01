@@ -2,7 +2,7 @@
   <div class="box">
       <div class="dox">
           <ul class="list-group">
-                  <li class="mt-1" v-for="(item,index) in musicArr" :key="index">
+                  <li class="mt-1 col-12 col-sm-5" v-for="(item,index) in musicArr" :key="index">
                       <router-link :to="{name:'playk'}" @click.native="axplay(item.id,index)" class="roua">
                       <div class="left">
                           <div class="top">
@@ -71,8 +71,13 @@ export default {
 .dox {
     width: 100%;
 }
+ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
 ul li {
-    width: 100%;
     height: 5rem;
     display: flex;
     flex-direction: row;

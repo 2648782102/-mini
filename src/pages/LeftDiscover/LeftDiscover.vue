@@ -10,10 +10,10 @@
       </div>
       <div class="top-input col-7">
         <button @click="seekplay" type="button" class="btn btn-light"><i class="fas fa-search me-1"></i>单曲/频道</button>
-      </div>
-      <div class="listening-song col-2">
-        <div class="">
-          <i class="fas fa-microphone"></i>
+        <div class="listening-song ms-2 me-2">
+          <div class="">
+            <i class="fas fa-microphone"></i>
+          </div>
         </div>
       </div>
     </div>
@@ -66,11 +66,17 @@
     height: 10%;
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: white;
+    z-index: 8;
   }
 
   .bodyRouter {
-    width: 100%;
     height: 90%;
+    margin-top: 10vh;
   }
 
   .top-left {
@@ -147,7 +153,6 @@
 
   .top-input>button {
     width: 80%;
-    height: 40%;
     border-radius: 5rem;
     color: rgb(150, 150, 150);
     box-shadow: 2px 1px 1px 1px rgb(218, 218, 218) inset;
@@ -155,17 +160,16 @@
   }
 
   .listening-song {
-    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
   }
 
   .listening-song>div {
-    width: 4rem;
-    height: 4rem;
+    width: 3rem;
+    height: 3rem;
     border-radius: 50%;
-    box-shadow: 3px 3px 5px 2px rgb(227, 227, 227);
+    box-shadow: 3px 3px 5px 1px rgb(227, 227, 227);
     display: flex;
     justify-content: center;
     align-items: center;

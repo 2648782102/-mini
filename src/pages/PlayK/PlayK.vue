@@ -1,7 +1,7 @@
 <template>
   <div class="lex">
     <div class="box container-fluid" v-if="musicweb">
-      <div class="dox1">
+      <div class="dox1 pt-4">
         <div class="yuan ms-2" @click="goreturn">
           <i class="fas fa-angle-left"></i>
         </div>
@@ -12,7 +12,7 @@
           <i class="fas fa-broadcast-tower"></i>
         </div>
       </div>
-      <div class="dox2">
+      <div class="dox2 pt-3 pb-3">
         <div class="yuan">
           <div class="yuanxin">
             <img :class="imgkb" :src="imgobj.songs[0].al.picUrl" alt="封面">
@@ -28,8 +28,8 @@
                 </p>
           </div>
           <div class="ddd" style="font-size:2.4rem;">
-            <p>{{ imgobj.songs[0].name }}</p>
-            <p style="font-size:1.2rem;font-weight:300;">{{ imgobj.songs[0].ar[0].name }}</p>
+            <p style="height: 100%;">{{ imgobj.songs[0].name }}</p>
+            <p style="font-size:1.2rem;font-weight:300;height: 100%;">{{ imgobj.songs[0].ar[0].name }}</p>
           </div>
           <div class="ddd">
             <div class="gushi">
@@ -56,7 +56,7 @@
         </div>
       </div>
       <!-- 播放控件 -->
-      <div class="dox4">
+      <div class="dox4 pt-3">
         <div class="top">
           <!-- 进度条 -->
           <div class="music-jindu">
@@ -64,7 +64,7 @@
               <div class="xiao" ref="W"></div>
             </div>
           </div>
-          <div class="music-date">
+          <div class="music-date pt-1">
             <p>{{ kMusicTime }}</p>
             <p>{{ musictime }}</p>
           </div>
@@ -83,7 +83,7 @@
           </div>
         </div>
       </div>
-      <div class="dox5">
+      <div class="dox5 mt-5">
         <i class="fas fa-random"></i>
         <div @click="ping">
           <p class="me-1">{{ pinglunnum }}条评论</p>
@@ -318,7 +318,7 @@
 
   .lex {
     width: 100%;
-    height: 100vh;
+    /* height: 100vh; */
   }
 
   .box {
@@ -329,7 +329,7 @@
 
   .dox1 {
     width: 100%;
-    height: 9%;
+    /* height: 9%; */
     display: flex;
     align-items: center;
     flex-direction: row;
@@ -372,7 +372,7 @@
 
   .dox2 {
     width: 100%;
-    height: 40%;
+    /* height: 40%; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -423,7 +423,8 @@
 
   .dox3 {
     width: 100%;
-    height: 22%;
+    height: 25vh;
+    margin-top: 1rem;
     display: flex;
     flex-direction: row;
     padding: 0 5% 0 5%;
@@ -434,19 +435,17 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    align-items: stretch;
+    justify-content: space-around;
   }
 
   .ddd {
     width: 100%;
-    height: 33%;
     font-size: 1.6rem;
     font-weight: 600;
     padding-left: 0.8rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    overflow: hidden;
   }
 
   .ddd p {
@@ -455,7 +454,6 @@
 
   .gushi {
     width: 58%;
-    height: 50%;
     border-radius: 2rem;
     box-shadow: 5px 6px 8px 2px rgba(186, 202, 217, 0.473);
     background-color: rgb(255, 255, 255);
@@ -493,7 +491,7 @@
 
   .rrr {
     width: 54%;
-    height: 20%;
+    /* height: 20%; */
     border-radius: 0.8rem;
     box-shadow: 3px 4px 6px 1px rgba(186, 202, 217, 0.686);
     background-color: rgb(255, 255, 255);
@@ -508,16 +506,16 @@
 
   .dox4 {
     width: 100%;
-    height: 18%;
-    margin-top: 2%;
+    /* height: 18%; */
     padding: 0 5% 0 5%;
+    margin-top: 2rem;
     display: flex;
     flex-direction: column;
   }
 
   .dox4>.top {
     width: 100%;
-    height: 30%;
+    /* height: 30%; */
     display: flex;
     flex-direction: column;
   }
@@ -530,7 +528,7 @@
 
   .da {
     width: 100%;
-    height: 30%;
+    height: 0.5rem;
     border-radius: 1rem;
     box-shadow: 0 0 1px 1px rgb(232, 232, 232) inset;
     background-color: #dde0ed88;
@@ -559,7 +557,7 @@
 
   .music-date {
     width: 100%;
-    height: 50%;
+    /* height: 50%; */
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -567,7 +565,7 @@
 
   .dox4>.bottom {
     width: 100%;
-    height: 70%;
+    /* height: 70%; */
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -612,7 +610,7 @@
 
   .dox5 {
     width: 100%;
-    height: 7%;
+    /* height: 7%; */
     padding: 0 5% 0 5%;
     display: flex;
     flex-direction: row;
@@ -626,7 +624,7 @@
   }
 
   .dox5>div {
-    height: 50%;
+    /* height: 50%; */
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -653,7 +651,7 @@
 
   .ll {
     width: 100%;
-    height: 10%;
+    /* height: 10%; */
     display: flex;
     flex-direction: row;
     align-items: center;
