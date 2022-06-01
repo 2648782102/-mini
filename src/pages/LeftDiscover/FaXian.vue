@@ -24,6 +24,29 @@
           </div>
         </div>
       </div>
+      <!-- 轮播 -->
+    <div id="demo" class="carousel slide" data-bs-ride="carousel">
+    
+      <!-- 指示符 -->
+      <div class="carousel-indicators">
+        <button v-for="(item,index) in bannersArr" :key="index" type="button" data-bs-target="#demo" :data-bs-slide-to="index" :class="index==1?'active':''"></button>
+      </div>
+
+      <!-- 轮播图片 -->
+      <div class="carousel-inner">
+        <div class="carousel-item" :class="index==1?'active':''" v-for="(item,index) in bannersArr" :key="index">
+          <img :src="item.pic" class="d-block" style="width:100%">
+        </div>
+      </div>
+      
+      <!-- 左右切换按钮 -->
+      <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </button>
+      </div>
       <div class="dox2">
         <div class="tui">
           <div class="tuiwen">
@@ -73,11 +96,14 @@
 </template>
 
 <script>
+import axios from 'axios'
+  
 
 export default {
     name: 'FaXian',
     data() {
       return {
+        bannersArr: [],
         tuiArr: [
           {
             id:1,
@@ -117,6 +143,15 @@ export default {
         ],
       }
     },
+    mounted() {
+          axios.get('http://music.cyrilstudio.top/banner?type=1')
+          .then((respone)=> {
+          this.bannersArr = respone.data.banners
+          })
+          .catch(function(error) {
+            console.log(error);
+          })
+        },
 }
 </script>
 
@@ -134,6 +169,10 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+  #demo {
+    border-radius: 0.5rem;
+    overflow: hidden;
   }
   .cd1 {
     position: relative;
