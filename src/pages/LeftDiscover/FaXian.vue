@@ -65,7 +65,7 @@
           </ul>
         </div>
       </div>
-      <div class="dox3">
+      <div class="dox3 mt-2">
         <img src="../../assets/img/yiqi.jpg" class="col-12 col-sm-12">
       </div>
       <div class="dox4 mt-4">
