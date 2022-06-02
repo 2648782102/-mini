@@ -144,7 +144,7 @@ export default {
       }
     },
     mounted() {
-          axios.get('http://music.cyrilstudio.top/banner?type=1')
+          axios.get('https://music.cyrilstudio.top/banner?type=1')
           .then((respone)=> {
           this.bannersArr = respone.data.banners
           })
