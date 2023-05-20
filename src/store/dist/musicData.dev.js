@@ -63,7 +63,7 @@ var _default = {
   actions: {
     // 获取歌曲链接信息
     mp3Obj: function mp3Obj(context, value) {
-      _axios["default"].get('http://www.musicapi.space/song/url?id=' + value).then(function (response) {
+      _axios["default"].get('https://www.musicapi.space/song/url?id=' + value).then(function (response) {
         context.commit('MP3OBJ', response.data);
       })["catch"](function (error) {
         console.log(error);
@@ -71,7 +71,7 @@ var _default = {
     },
     // 获取歌曲信息(封面等)
     imgObj: function imgObj(context, value) {
-      _axios["default"].get('http://www.musicapi.space/song/detail?ids=' + value).then(function (response) {
+      _axios["default"].get('https://www.musicapi.space/song/detail?ids=' + value).then(function (response) {
         context.commit('IMGOBJ', response.data);
       })["catch"](function (error) {
         console.log(error);
@@ -79,7 +79,7 @@ var _default = {
     },
     // 获取评价
     pingLun: function pingLun(context, value) {
-      _axios["default"].get('http://www.musicapi.space/comment/hot?type=0&id=' + value).then(function (response) {
+      _axios["default"].get('https://www.musicapi.space/comment/hot?type=0&id=' + value).then(function (response) {
         context.commit('PINGLUN', response.data);
       })["catch"](function (error) {
         console.log(error);
@@ -87,7 +87,7 @@ var _default = {
     },
     // 获取歌词
     lyRic: function lyRic(context, value) {
-      _axios["default"].get('http://www.musicapi.space/lyric?id=' + value).then(function (response) {
+      _axios["default"].get('https://www.musicapi.space/lyric?id=' + value).then(function (response) {
         context.commit('LYRIC', response.data);
       })["catch"](function (error) {
         console.log(error);

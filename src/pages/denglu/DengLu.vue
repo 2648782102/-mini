@@ -34,7 +34,7 @@ export default {
             this.$router.back()
         },
         subm() {
-            axios.get('http://www.musicapi.space/login/cellphone?phone='+this.phone+'&&password='+this.password)
+            axios.get('https://www.musicapi.space/login/cellphone?phone='+this.phone+'&&password='+this.password)
             .then(response => {
                 this.$store.commit('musicData/USERXINXI',response.data.bindings[0])
                 this.$router.push({

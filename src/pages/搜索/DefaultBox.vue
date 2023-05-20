@@ -20,7 +20,7 @@ export default {
       ...mapState('musicData',['reshou']),
     },
     mounted() {
-      axios.get('http://www.musicapi.space/search/hot/detail')
+      axios.get('https://www.musicapi.space/search/hot/detail')
                 .then(response => {
                     this.$store.commit('musicData/RESHOU',response.data.data)
                 })
