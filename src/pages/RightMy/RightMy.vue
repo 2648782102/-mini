@@ -155,7 +155,7 @@ import axios from 'axios'
         methods: {
             // 单击歌单
             gedan(id) {
-                axios.get('https://netease-cloud-music-api-lilac-one-32.vercel.app/playlist/track/all?id='+id+'&limit=10&offset=1')
+                axios.get('http://www.musicapi.space/playlist/track/all?id='+id+'&limit=10&offset=1')
                 .then(response => {
                     this.$store.commit('musicData/GETMUSIC', response.data.songs)
                     this.$router.push({
@@ -188,7 +188,7 @@ import axios from 'axios'
         watch: {
             userxinxi() {
                 this.$nextTick(() => {
-                    axios.get('https://netease-cloud-music-api-lilac-one-32.vercel.app/user/record?uid='+this.userxinxi.userId)
+                    axios.get('http://www.musicapi.space/user/record?uid='+this.userxinxi.userId)
                 .then(response => {
                     this.$store.commit('musicData/ZUIJINPLAY',response.data.allData[0].song.al)
                     this.loginState = true
@@ -197,14 +197,14 @@ import axios from 'axios'
                     console.log(error)
                 })
                 // 获取用户详细信息
-                axios.get('https://netease-cloud-music-api-lilac-one-32.vercel.app/user/detail?uid='+this.userxinxi.userId)
+                axios.get('http://www.musicapi.space/user/detail?uid='+this.userxinxi.userId)
                 .then(response => {
                     // console.log(response);
                     this.username = response.data.profile.nickname
                     this.userImgurl = response.data.profile.avatarUrl
                 })
                 // 获取用户歌单
-                axios.get('https://netease-cloud-music-api-lilac-one-32.vercel.app/user/playlist?uid='+this.userxinxi.userId)
+                axios.get('http://www.musicapi.space/user/playlist?uid='+this.userxinxi.userId)
                 .then(response => {
                     this.mylike = response.data.playlist[0]
                     this.playlist = response.data.playlist

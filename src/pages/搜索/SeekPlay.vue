@@ -1,4 +1,5 @@
 <template>
+    <!-- 搜索框 -->
     <div class="box">
         <div class="seek">
             <div class="seekdiv">
@@ -33,7 +34,7 @@
         methods: {
             btenter() {
                 axios
-                    .get("https://netease-cloud-music-api-lilac-one-32.vercel.app/search?keywords=" + this.input)
+                    .get("http://www.musicapi.space/search?keywords=" + this.input)
                     .then(response => {
                         this.myMusicArr = response.data.result.songs
                         this.$store.commit('musicData/GETMUSIC', this.myMusicArr)

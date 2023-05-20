@@ -7,7 +7,7 @@ import App from './App.vue'
 import router from './router'
 // 引入store 
 import store from './store'
-// 引入图片懒加载组件
+// 引入图片懒加载插件
 import VueLazyload from 'vue-lazyload'
 
 const loadimage = require('./assets/loding.gif')

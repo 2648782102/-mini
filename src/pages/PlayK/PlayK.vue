@@ -21,7 +21,7 @@
       </div>
       <div class="dox3">
         <div class="left">
-          <div class="ddd">
+          <div class="ddd" style="height: 5rem;">
               <p v-for="(item,key,index) in lyricObj" :key="index">
                 <span
                 v-if="lrctime>key&&lrctime<allkeys[index+1]" :key="index">{{item}}</span>

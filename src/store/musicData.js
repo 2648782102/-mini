@@ -54,7 +54,7 @@ export default {
         actions: {
             // 获取歌曲链接信息
             mp3Obj(context,value) {
-                axios.get('https://netease-cloud-music-api-lilac-one-32.vercel.app/song/url?id='+value)
+                axios.get('http://www.musicapi.space/song/url?id='+value)
                 .then(response => {
                     context.commit('MP3OBJ',response.data)
                 })
@@ -64,7 +64,7 @@ export default {
             },
             // 获取歌曲信息(封面等)
             imgObj(context,value) {
-                axios.get('https://netease-cloud-music-api-lilac-one-32.vercel.app/song/detail?ids='+value)
+                axios.get('http://www.musicapi.space/song/detail?ids='+value)
                 .then(response => {
                     context.commit('IMGOBJ',response.data)
                 })
@@ -74,7 +74,7 @@ export default {
             },
             // 获取评价
             pingLun(context,value) {
-                axios.get('https://netease-cloud-music-api-lilac-one-32.vercel.app/comment/hot?type=0&id='+value)
+                axios.get('http://www.musicapi.space/comment/hot?type=0&id='+value)
                 .then(response => {
                     context.commit('PINGLUN',response.data)
                 })
@@ -84,7 +84,7 @@ export default {
             },
             // 获取歌词
             lyRic(context,value) {
-                axios.get('https://netease-cloud-music-api-lilac-one-32.vercel.app/lyric?id='+value)
+                axios.get('http://www.musicapi.space/lyric?id='+value)
                 .then(response => {
                     context.commit('LYRIC',response.data)
                 })
