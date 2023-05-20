@@ -34,7 +34,7 @@
         methods: {
             btenter() {
                 axios
-                    .get("http://www.musicapi.space/search?keywords=" + this.input)
+                    .get("https://www.musicapi.space/search?keywords=" + this.input)
                     .then(response => {
                         this.myMusicArr = response.data.result.songs
                         this.$store.commit('musicData/GETMUSIC', this.myMusicArr)
